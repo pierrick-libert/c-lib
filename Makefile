@@ -17,19 +17,20 @@ SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
 # define the executable file
-MAIN = mycc
+MAIN = libmy.a
 
 all: $(MAIN)
 
 $(MAIN): $(OBJS)
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
+	@ar rc $(MAIN) $(OBJS)
+	@ranlib $(MAIN)
 
 
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
 
 clean:
-	$(RM) *.o *~
+	$(RM) *.o *~ *#
 
 fclean: clean
 	$(RM) $(MAIN)

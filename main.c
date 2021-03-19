@@ -1,37 +1,52 @@
 /*
 * @Author: Pierrick Libert
 * @Date:   2021-03-19 11:52:09
-* @Last Modified by:   plibert
-* @Last Modified time: 2021-03-19 14:12:27
+* @Last Modified by:   Pierrick Libert
+* @Last Modified time: 2021-03-19 19:11:10
 */
 
 #include "main.h"
 
-void  test(int n)
+void  test(char *n, char *b)
 {
-  char  s1[13];
-  char  s2[7];
-  char  s3[7];
+  char  n1[20];
+  char  n2[20];
 
-  strcpy(s1, "Hello World!");
-  strcpy(s2, "Salut!");
-  strcpy(s3, "Salut!");
-  printf("s1 => %s\ns2 => %s\ns3 => %s\n\n", s1, s2, s3);
-  printf("ft_strncpy(s2, s1, %i) => %s\n\n", n, my_strncpy(s2, s1, n));
-  printf("s1 => %s\ns2 => %s\ns3 => %s\n", s1, s2, s3);
-  printf("____________________________________________\n\n");
-  strcpy(s1, "Hello World!");
-  strcpy(s2, "Salut!");
-  strcpy(s3, "Salut!");
-  printf("s1 => %s\ns2 => %s\ns3 => %s\n\n", s1, s2, s3);
-  printf("strncpy(s3, s1, %i) => %s\n\n", n, strncpy(s2, s1, n));
-  printf("s1 => %s\ns2 => %s\ns3 => %s\n", s1, s2, s3);
+  strcat(strcpy(n1, "+"), n);
+  strcat(strcpy(n2, "-"), n);
+  printf("ft_atoi_base(%s, %s) => %i\n", n, b, my_atoi_base(n, b));
+  printf("________________________________________\n\n");
+  printf("ft_atoi_base(%s, %s) => %i\n", n1, b, my_atoi_base(n1, b));
+  printf("________________________________________\n\n");
+  printf("ft_atoi_base(%s, %s) => %i\n", n2, b, my_atoi_base(n2, b));
+}
+
+void  test1(char *n)
+{
+  test(n, "01");
+  printf("________________________________________\n\n");
+  test(n, "01234567");
+  printf("________________________________________\n\n");
+  test(n, "0123456789");
+  printf("________________________________________\n\n");
+  test(n, "0123456789ABCDEF");
 }
 
 int   main(void)
 {
-  test(5);
+  test1("0");
   printf("\n\n////////////////////////////////////////\n\n\n");
-  test(20);
+  test1("1");
+  printf("\n\n////////////////////////////////////////\n\n\n");
+  test1("10");
+  printf("\n\n////////////////////////////////////////\n\n\n");
+  test1("42");
+  printf("\n\n////////////////////////////////////////\n\n\n");
+  test1("52");
+  printf("\n\n////////////////////////////////////////\n\n\n");
+  test1("2A");
+  printf("\n\n////////////////////////////////////////\n\n\n");
+  test1("101010");
+  printf("\n\n////////////////////////////////////////\n\n\n");
   return (0);
 }
